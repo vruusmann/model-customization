@@ -8,6 +8,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.Source;
 
 import org.dmg.pmml.DataType;
+import org.dmg.pmml.OpType;
 import org.dmg.pmml.PMML;
 import org.dmg.pmml.PMMLObject;
 import org.dmg.pmml.Visitor;
@@ -48,7 +49,7 @@ public class Main {
 					HasValue hasValue = (HasValue)object;
 
 					System.out.println("Found a cache-enabled PMML class model object: " + object);
-					System.out.println("\t" + hasValue.getValue(DataType.DOUBLE));
+					System.out.println("\t" + hasValue.getValue(DataType.DOUBLE, OpType.CONTINUOUS));
 				}
 
 				return VisitorAction.CONTINUE;

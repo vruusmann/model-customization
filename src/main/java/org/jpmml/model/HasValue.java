@@ -1,11 +1,16 @@
 package org.jpmml.model;
 
 import org.dmg.pmml.DataType;
+import org.dmg.pmml.OpType;
+import org.jpmml.evaluator.FieldValue;
 
 public interface HasValue {
 
 	/**
-	 * @param dataType The data type into which the underlying string representation of the value should be parsed into.
+	 * @param dataType
+	 * @param opType
+	 *
+	 * @return A {@link FieldValue} instance that represents the underlying string value.
 	 */
-	Object getValue(DataType dataType);
+	FieldValue getValue(DataType dataType, OpType opType);
 }

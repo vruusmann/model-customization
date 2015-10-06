@@ -1,19 +1,24 @@
 package org.jpmml.model;
 
 import org.dmg.pmml.DataType;
+import org.dmg.pmml.OpType;
 import org.dmg.pmml.SimplePredicate;
-import org.jpmml.evaluator.TypeUtil;
+import org.jpmml.evaluator.FieldValue;
+import org.jpmml.evaluator.FieldValueUtil;
 
 public class CachingSimplePredicate extends SimplePredicate implements HasValue {
 
-	private Object parsedValue = null;
+	private FieldValue parsedValue = null;
 
 
+	/**
+	 * @see SimplePredicate#getValue()
+	 */
 	@Override
-	public Object getValue(DataType dataType){
+	public FieldValue getValue(DataType dataType, OpType opType){
 
 		if(this.parsedValue == null){
-			this.parsedValue = TypeUtil.parseOrCast(dataType, getValue());
+			this.parsedValue = FieldValueUtil.create(dataType, opType, getValue());
 		}
 
 		return this.parsedValue;
