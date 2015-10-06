@@ -1,14 +1,9 @@
 package org.jpmml.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.dmg.pmml.DataType;
 import org.dmg.pmml.SimplePredicate;
 import org.jpmml.evaluator.TypeUtil;
 
-@XmlRootElement (
-	name = "SimplePredicate"
-)
 public class CachingSimplePredicate extends SimplePredicate implements HasValue {
 
 	private Object parsedValue = null;
